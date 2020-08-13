@@ -11,21 +11,24 @@
 
 <body>
     <div class="header">
-        <select name="" id="">
+        <select>
             <option disabled selected value>Selecciona para hallar el área</option>
             <option value="1">Área de circulo</option>
             <option value="2">Área de triángulo rectángulo</option>
             <option value="3">Área de cuadrado</option>
             <option value="4">Área de rectángulo</option>
         </select>
-        <div class="first-value-container">
-            <label class="first-value-label"></label>
-            <input type="number" />
+        <div class="inputs-container">
+            <div class="first-value-container">
+                <label class="first-value-label"></label>
+                <input type="number" class="first-value-input" disabled/>
+            </div>
+            <div class="second-value-container">
+                <label class="second-value-label"></label>
+                <input type="number" class="second-value-input" disabled/>
+            </div>
         </div>
-        <div class="second-value-container">
-            <label class="second-value-label"></label>
-            <input type="number" />
-        </div>
+        <button disabled>Calcular</button>
     </div>
     <div class="board">
 

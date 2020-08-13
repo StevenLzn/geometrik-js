@@ -1,0 +1,38 @@
+.header {
+    width: 30%;
+    margin: auto;
+}
+
+select{
+    display: block;
+    margin: auto;
+    width: 52%;
+    margin-bottom: 4%;
+}
+
+.inputs-container {
+    display: block;
+    margin: auto;
+    width: 52%;
+    margin-bottom: 4%;
+}
+
+.first-value-container,
+.second-value-container{
+    display: inline-block;
+    width: 49%;
+}
+
+.first-value-input,
+.second-value-input{
+    width: 46%;
+}
+
+button {
+    display: block;
+    margin: auto;
+    width: 52%;
+    background: #FCCF81;
+    border: 1px #F3C26B solid;
+    padding: 2%;
+}
