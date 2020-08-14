@@ -36,3 +36,9 @@ button {
     border: 1px #F3C26B solid;
     padding: 2%;
 }
+
+.board{
+    display: block;
+    margin: auto;
+    margin-top: 1%;
+}

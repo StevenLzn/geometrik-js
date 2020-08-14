@@ -2,6 +2,9 @@ let option;
 let valueA;
 let valueB;
 let result;
+let canvas = document.querySelector('.board');
+let context = canvas.getContext('2d');
+let line = canvas.getContext('2d')
 const selectOption = document.querySelector('select');
 const firstValueContainer = document.querySelector('.first-value-container');
 const secondValueContainer = document.querySelector('.second-value-container');
@@ -13,6 +16,26 @@ const button = document.querySelector('button');
 
 selectOption.addEventListener('change', changeOption);
 button.addEventListener('click', clickResult);
+
+function drawGrid() {
+    //Dibujo líneas verticales
+    context.beginPath();
+    for (var x = 0.5; x < 1001; x += 20) {
+        context.moveTo(x, 0);
+        context.lineTo(x, 501);
+    }
+
+    //Dibujo líneas horizontal
+    for (var y = 0.5; y < 501; y += 20) {
+        context.moveTo(0, y);
+        context.lineTo(1000, y);
+    }
+    context.strokeStyle = "#ddd";
+    context.stroke();
+    context.closePath()
+}
+
+drawGrid();
 
 function changeOption() {
     option = selectOption.value;
@@ -47,7 +70,9 @@ function changeOption() {
 function clickResult() {
     valueA = firstValueInput.value;
     valueB = secondValueInput.value;
-
+    context.clearRect(0, 0, 1001, 501);
+    drawGrid();
+    context.beginPath();
     switch (option) {
         case '1':
             result = Math.PI * Math.pow(valueA, 2);
@@ -57,6 +82,22 @@ function clickResult() {
             break;
         case '3':
             result = Math.pow(valueA, 2);
+            valueA = (valueA * 20);
+            //Linea izquierda
+            line.moveTo(480, 220);
+            line.lineTo(480, valueA + 220);
+            //linea arriba
+            line.moveTo(480, 220);
+            line.lineTo(valueA + 480, 220);
+            //linea derecha
+            line.moveTo(valueA + 480, 220);
+            line.lineTo(valueA + 480, valueA + 220);
+            //linea abajo
+            line.moveTo(valueA + 480, valueA + 220);
+            line.lineTo(480, valueA + 220);
+
+            line.strokeStyle = "black";
+            line.stroke();
             break;
         case '4':
             result = valueA * valueB;
@@ -65,4 +106,5 @@ function clickResult() {
             break;
     }
     console.log(result);
+    context.closePath()
 }
