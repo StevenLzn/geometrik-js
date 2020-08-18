@@ -70,9 +70,15 @@ function changeOption() {
 function clickResult() {
     valueA = firstValueInput.value;
     valueB = secondValueInput.value;
+    let centerA;
+    let centerB;
+    let oddA;
+    let oddB;
+
     context.clearRect(0, 0, 1001, 501);
     drawGrid();
     context.beginPath();
+
     switch (option) {
         case '1':
             result = Math.PI * Math.pow(valueA, 2);
@@ -83,28 +89,64 @@ function clickResult() {
         case '3':
             result = Math.pow(valueA, 2);
             valueA = (valueA * 20);
+            centerA = valueA / 2;
+            oddA = centerA % 20;
+            if (oddA !== 0) {
+                centerA += 10;
+            }
             //Linea izquierda
-            line.moveTo(480, 220);
-            line.lineTo(480, valueA + 220);
+            line.moveTo(500 - centerA, 240 - centerA);
+            line.lineTo(500 - centerA, valueA + 240 - centerA);
             //linea arriba
-            line.moveTo(480, 220);
-            line.lineTo(valueA + 480, 220);
+            line.moveTo(500 - centerA, 240 - centerA);
+            line.lineTo(valueA - centerA + 500, 240 - centerA);
             //linea derecha
-            line.moveTo(valueA + 480, 220);
-            line.lineTo(valueA + 480, valueA + 220);
+            line.moveTo(valueA + 500 - centerA, 240 - centerA);
+            line.lineTo(valueA + 500 - centerA, valueA + 240 - centerA);
             //linea abajo
-            line.moveTo(valueA + 480, valueA + 220);
-            line.lineTo(480, valueA + 220);
+            line.moveTo(valueA + 500 - centerA, valueA + 240 - centerA);
+            line.lineTo(500 - centerA, valueA + 240 - centerA);
+            line.font = "18px Arial";
+            line.fillText('Area: '+ result + 'cm', 500 - centerA, 235 - centerA);
 
             line.strokeStyle = "black";
             line.stroke();
             break;
         case '4':
             result = valueA * valueB;
+            valueA = (valueA * 20);
+            valueB = (valueB * 20);
+            centerA = valueA / 2;
+            centerB = valueB / 2;
+            oddA = centerA % 20;
+            oddB = centerB % 20;
+            if (oddA !== 0) {
+                centerA += 10;
+            }
+            if (oddB !== 0) {
+                centerB += 10;
+            }
+            //Linea izquierda
+            line.moveTo(500 - centerA, 240 - centerB);
+            line.lineTo(500 - centerA, valueB + 240 - centerB);
+            //linea arriba
+            line.moveTo(500 - centerA, 240 - centerB);
+            line.lineTo(valueA - centerA + 500, 240 - centerB);
+            //linea derecha
+            line.moveTo(valueA + 500 - centerA, 240 - centerB);
+            line.lineTo(valueA + 500 - centerA, valueB + 240 - centerB);
+            //linea abajo
+            line.moveTo(valueA + 500 - centerA, valueB + 240 - centerB);
+            line.lineTo(500 - centerA, valueB + 240 - centerB);
+            //Texto
+            line.font = "18px Arial";
+            line.fillText('Area: '+ result + 'cm', 500 - centerA, 235 - centerB);
+
+            line.strokeStyle = "black";
+            line.stroke();
             break;
         default:
             break;
     }
-    console.log(result);
     context.closePath()
 }
