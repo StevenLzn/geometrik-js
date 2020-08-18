@@ -70,8 +70,8 @@ function changeOption() {
 function clickResult() {
     valueA = firstValueInput.value;
     valueB = secondValueInput.value;
-    let centerA;
-    let centerB;
+    let centerMovementA;
+    let centerMovementB;
     let oddA;
     let oddB;
 
@@ -89,25 +89,25 @@ function clickResult() {
         case '3':
             result = Math.pow(valueA, 2);
             valueA = (valueA * 20);
-            centerA = valueA / 2;
-            oddA = centerA % 20;
+            centerMovementA = valueA / 2;
+            oddA = centerMovementA % 20;
             if (oddA !== 0) {
-                centerA += 10;
+                centerMovementA += 10;
             }
             //Linea izquierda
-            line.moveTo(500 - centerA, 240 - centerA);
-            line.lineTo(500 - centerA, valueA + 240 - centerA);
+            line.moveTo(500 - centerMovementA, 240 - centerMovementA);
+            line.lineTo(500 - centerMovementA, valueA + 240 - centerMovementA);
             //linea arriba
-            line.moveTo(500 - centerA, 240 - centerA);
-            line.lineTo(valueA - centerA + 500, 240 - centerA);
+            line.moveTo(500 - centerMovementA, 240 - centerMovementA);
+            line.lineTo(valueA - centerMovementA + 500, 240 - centerMovementA);
             //linea derecha
-            line.moveTo(valueA + 500 - centerA, 240 - centerA);
-            line.lineTo(valueA + 500 - centerA, valueA + 240 - centerA);
+            line.moveTo(valueA + 500 - centerMovementA, 240 - centerMovementA);
+            line.lineTo(valueA + 500 - centerMovementA, valueA + 240 - centerMovementA);
             //linea abajo
-            line.moveTo(valueA + 500 - centerA, valueA + 240 - centerA);
-            line.lineTo(500 - centerA, valueA + 240 - centerA);
+            line.moveTo(valueA + 500 - centerMovementA, valueA + 240 - centerMovementA);
+            line.lineTo(500 - centerMovementA, valueA + 240 - centerMovementA);
             line.font = "18px Arial";
-            line.fillText('Area: '+ result + 'cm', 500 - centerA, 235 - centerA);
+            line.fillText('Area: '+ result + 'cm', 500 - centerMovementA, 235 - centerMovementA);
 
             line.strokeStyle = "black";
             line.stroke();
@@ -116,31 +116,31 @@ function clickResult() {
             result = valueA * valueB;
             valueA = (valueA * 20);
             valueB = (valueB * 20);
-            centerA = valueA / 2;
-            centerB = valueB / 2;
-            oddA = centerA % 20;
-            oddB = centerB % 20;
+            centerMovementA = valueA / 2;
+            centerMovementB = valueB / 2;
+            oddA = centerMovementA % 20;
+            oddB = centerMovementB % 20;
             if (oddA !== 0) {
-                centerA += 10;
+                centerMovementA += 10;
             }
             if (oddB !== 0) {
-                centerB += 10;
+                centerMovementB += 10;
             }
             //Linea izquierda
-            line.moveTo(500 - centerA, 240 - centerB);
-            line.lineTo(500 - centerA, valueB + 240 - centerB);
+            line.moveTo(500 - centerMovementA, 240 - centerMovementB);
+            line.lineTo(500 - centerMovementA, valueB + 240 - centerMovementB);
             //linea arriba
-            line.moveTo(500 - centerA, 240 - centerB);
-            line.lineTo(valueA - centerA + 500, 240 - centerB);
+            line.moveTo(500 - centerMovementA, 240 - centerMovementB);
+            line.lineTo(valueA - centerMovementA + 500, 240 - centerMovementB);
             //linea derecha
-            line.moveTo(valueA + 500 - centerA, 240 - centerB);
-            line.lineTo(valueA + 500 - centerA, valueB + 240 - centerB);
+            line.moveTo(valueA + 500 - centerMovementA, 240 - centerMovementB);
+            line.lineTo(valueA + 500 - centerMovementA, valueB + 240 - centerMovementB);
             //linea abajo
-            line.moveTo(valueA + 500 - centerA, valueB + 240 - centerB);
-            line.lineTo(500 - centerA, valueB + 240 - centerB);
+            line.moveTo(valueA + 500 - centerMovementA, valueB + 240 - centerMovementB);
+            line.lineTo(500 - centerMovementA, valueB + 240 - centerMovementB);
             //Texto
             line.font = "18px Arial";
-            line.fillText('Area: '+ result + 'cm', 500 - centerA, 235 - centerB);
+            line.fillText('Area: '+ result + 'cm', 500 - centerMovementA, 235 - centerMovementB);
 
             line.strokeStyle = "black";
             line.stroke();
