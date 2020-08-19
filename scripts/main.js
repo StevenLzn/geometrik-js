@@ -82,9 +82,43 @@ function clickResult() {
     switch (option) {
         case '1':
             result = Math.PI * Math.pow(valueA, 2);
+            valueA = valueA * 20;
+            line.arc(500, 240, valueA, 0, 2 * Math.PI);
+            //Texto
+            line.font = "18px Arial";
+            line.fillText('Area: ' + Math.round(result * 10000) / 10000 + 'cm', 500, 235 - valueA);
+            line.strokeStyle = "black";
+            line.stroke();
             break;
         case '2':
             result = (valueA * valueB) / 2;
+            valueA = (valueA * 20);
+            valueB = (valueB * 20);
+            centerMovementA = valueA / 2;
+            centerMovementB = valueB / 2;
+            oddA = centerMovementA % 20;
+            oddB = centerMovementB % 20;
+            if (oddA !== 0) {
+                centerMovementA += 10;
+            }
+            if (oddB !== 0) {
+                centerMovementB += 10;
+            }
+            //Linea izquierda
+            line.moveTo(500 - centerMovementA, 240 - centerMovementB);
+            line.lineTo(500 - centerMovementA, valueB + 240 - centerMovementB);
+            //linea abajo
+            line.moveTo(valueA + 500 - centerMovementA, valueB + 240 - centerMovementB);
+            line.lineTo(500 - centerMovementA, valueB + 240 - centerMovementB);
+            //linea diagonal
+            line.moveTo(500 - centerMovementA, 240 - centerMovementB);
+            line.lineTo(valueA + 500 - centerMovementA, valueB + 240 - centerMovementB);
+            //Texto
+            line.font = "18px Arial";
+            line.fillText('Area: ' + result + 'cm', 500 - centerMovementA, 235 - centerMovementB);
+
+            line.strokeStyle = "black";
+            line.stroke();
             break;
         case '3':
             result = Math.pow(valueA, 2);
@@ -107,7 +141,7 @@ function clickResult() {
             line.moveTo(valueA + 500 - centerMovementA, valueA + 240 - centerMovementA);
             line.lineTo(500 - centerMovementA, valueA + 240 - centerMovementA);
             line.font = "18px Arial";
-            line.fillText('Area: '+ result + 'cm', 500 - centerMovementA, 235 - centerMovementA);
+            line.fillText('Area: ' + result + 'cm', 500 - centerMovementA, 235 - centerMovementA);
 
             line.strokeStyle = "black";
             line.stroke();
@@ -140,7 +174,7 @@ function clickResult() {
             line.lineTo(500 - centerMovementA, valueB + 240 - centerMovementB);
             //Texto
             line.font = "18px Arial";
-            line.fillText('Area: '+ result + 'cm', 500 - centerMovementA, 235 - centerMovementB);
+            line.fillText('Area: ' + result + 'cm', 500 - centerMovementA, 235 - centerMovementB);
 
             line.strokeStyle = "black";
             line.stroke();
